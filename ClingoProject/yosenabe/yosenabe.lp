@@ -41,15 +41,18 @@ V_T_dist = |Py2 - Qy2|, V_B_dist = |Py2 - Py1|, V_U_dist = |Qy2 - Py1|, V_T_dist
 H_T_dist = |Px1 - Qx1|, H_L_dist = |Px1 - Qx2|, H_R_dist = |Qx1 - Qx2|, H_T_dist == H_L_dist + H_R_dist.
 
 % Falta ver coolineares
-
+:- target(Px1, Py1, Qx1, Qy1), target(Px2, Py2, Qx2, Qy2),
+Px1 = Qx1, Px2 = Qx2, Px1 = Qx2,
+|Px1 - Px2| < |Px1 - Qx2|, |Px2 - Qx2| < |Px2 - Qx2|.
 
 % Guarantee the threshold on goals
-{additor(N, Xo, Yo, V) : number( Xo, Yo, V)} :- goal(N, _), area(X, Y, N), target(Xo, Yo, X, Y).
-g(N, Aux, T) :-  goal(N, T), Aux = #sum{ V:additor(N, Xo, Yo, V)}, Aux == T.
+additor(N, Xo, Yo, V) :- target(Xo, Yo, Xf, Yf), number(Xo, Yo, V), goal(N, _), area(Xf, Yf, N).
+
+%g(N, Aux, T) :-  goal(N, T), Aux = #sum{ V:additor(N, Xo, Yo, V)}, Aux == T.
 :- goal(N, T), Aux = #sum{ V : additor(N, Xo, Yo, V) }, Aux != T.
 
 
 %#show additor/4.
-#show g/3.
+%#show g/3.
 %#show orientation/7.
 #show target/4.
