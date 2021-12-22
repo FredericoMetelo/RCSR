@@ -35,20 +35,12 @@
 
 
 % Stop arrow crossing: Diferentes targets, que se movem em eixos diferentes, então distãncia entre o inicio e fim da seta tem que ser menor á distância até ao eixo do movimento do outro.
-% https://www.geeksforgeeks.org/check-if-two-given-line-segments-intersect/
+:- target(Px1, Py1, Qx1, Qy1), target(Px2, Py2, Qx2, Qy2),
+Py1 == Qy1, Px2 == Qx2,
+V_T_dist = |Py2 - Qy2|, V_B_dist = |Py2 - Py1|, V_U_dist = |Qy2 - Py1|, V_T_dist == V_U_dist + V_B_dist,
+H_T_dist = |Px1 - Qx1|, H_L_dist = |Px1 - Qx2|, H_R_dist = |Qx1 - Qx2|, H_T_dist == H_L_dist + H_R_dist.
 
-% Testa Colinearidade dos pontos.
-on_segment(Px, Py, Qx, Qy, Rx, Ry):- target(Px, Py, Qx, Qy), target(Rx, Ry, _, _),
- Max_p_r_x = #max{Px, Rx}, Qx <= Max_p_r_x, Min_p_r_x = #min{Px, Rx}, Qx >= Min_p_r_x,
- Max_p_r_y = #max{Py, Ry}, Qy <= Max_p_r_y, Min_p_r_y = #min{Px, Rx}, Qx >= Min_p_r_y.
-
-% Sigo os 3 valores de orientacao do tutorial 0,1,2
-% coolinear
-orientation(Px, Py, Qx, Qy, Rx, Ry, 0):- Val = (Qy - Py) * (Rx - Qx) - (Qx - Px) * (Ry - Qy), Val == 0.
-% clock-wise
-orientation(Px, Py, Qx, Qy, Rx, Ry, 1):- Val = (Qy - Py) * (Rx - Qx) - (Qx - Px) * (Ry - Qy), Val >= 0.
-% counterclock-wise
-orientation(Px, Py, Qx, Qy, Rx, Ry, 2):- Val = (Qy - Py) * (Rx - Qx) - (Qx - Px) * (Ry - Qy), Val <= 0.
+% Falta ver coolineares
 
 
 % Guarantee the threshold on goals
@@ -56,8 +48,8 @@ orientation(Px, Py, Qx, Qy, Rx, Ry, 2):- Val = (Qy - Py) * (Rx - Qx) - (Qx - Px)
 g(N, Aux, T) :-  goal(N, T), Aux = #sum{ V:additor(N, Xo, Yo, V)}, Aux == T.
 :- goal(N, T), Aux = #sum{ V : additor(N, Xo, Yo, V) }, Aux != T.
 
-%#show fail_x/2.
-%#show fail_y/2.
-#show additor/4.
+
+%#show additor/4.
 #show g/3.
+%#show orientation/7.
 #show target/4.
