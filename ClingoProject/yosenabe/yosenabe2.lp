@@ -51,10 +51,10 @@ fail :- arrow(X1, Y1, X, Y), arrow(X2, Y2, X, Y), Y1 != Y2.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Guarantee the threshold on goals
-additor(N, Xo, Yo, V) :- target(Xo, Yo, Xf, Yf), number(Xo, Yo, V), goal(N, _), area(Xf, Yf, N).
+additor(N, V, Xo, Yo) :- target(Xo, Yo, Xf, Yf), number(Xo, Yo, V), goal(N, _), area(Xf, Yf, N).
 
-g(N, Aux, T) :-  goal(N, T), Aux = #sum{ V:additor(N, Xo, Yo, V)}, Aux == T.
-:- goal(N, T), Aux = #sum{ V : additor(N, Xo, Yo, V) }, Aux != T.
+g(N, T, Aux) :-  goal(N, T), Aux = #sum{ V,X,Y:additor(N, V, X, Y)}.
+:- goal(N, T), Aux = #sum{ V,X,Y:additor(N, V, X, Y)}, Aux != T.
 
 
 %#show additor/4.

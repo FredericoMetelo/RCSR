@@ -1,16 +1,35 @@
+
+number(1,4,2).
+number(1,6,3).
+number(2,1,5).
+number(4,3,2).
+number(4,7,5).
+number(6,1,1).
+number(7,5,1).
+target(1,4,1,2).
+target(1,6,6,6).
+target(2,1,5,1).
+target(4,3,2,3).
+target(4,7,3,7).
+target(6,1,6,2).
+target(7,5,5,5).
+
+
+
+
 % target(3,1,3,6). % Horizontal 1
-target(1,1,1,3).
-target(2,2,5,2).
+additor(2,5,4,7).
+additor(3,5,2,1).
+additor(3,1,6,1).
+additor(3,1,7,5).
 
-arrow(Xo, Y, Xo..Xf, Y) :- target(Xo, Y, Xf, Y), Xo < Xf.
-arrow(Xo, Y, Xf..Xo, Y) :- target(Xo, Y, Xf, Y), Xo > Xf.
-arrow(X, Yo, X, Yo..Yf) :- target(X, Yo, X, Yf), Yo < Yf.
-arrow(X, Yo, X, Yf..Yo) :- target(X, Yo, X, Yf), Yo > Yf.
 
-fail :- arrow(X1, Y1, X, Y), arrow(X2, Y2, X, Y), X1 != X2.
-fail :- arrow(X1, Y1, X, Y), arrow(X2, Y2, X, Y), Y1 != Y2.
-:- fail.
+goal(3,7).
+goal(2,5).
+
 % Y_min = #min{Yo, Yf}, Y_max = #max{Yo, Yf}
 
-#show arrow/4.
-#show target/4.
+g(N, T, Aux) :-  goal(N, T), Aux = #sum{ V,X,Y:additor(N, V, X, Y)}.
+
+#show additor/4.
+#show g/3.
