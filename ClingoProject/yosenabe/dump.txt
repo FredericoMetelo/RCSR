@@ -1,11 +1,50 @@
-additor(1,4,1,8)
-additor(3,2,7,5) additor(3,2,9,1)
-additor(4,2,6,1)
-additor(6,3,4,1) additor(6,4,6,4) additor(6,5,3,1)
-additor(7,5,5,1)
-additor(8,4,2,4) additor(8,6,8,4) 
-additor(9,6,6,3) additor(9,7,5,1) additor(9,7,9,3)
-additor(10,8,3,2) additor(10,9,2,1)
-additor(11,8,7,4)
-
-g(3,6,6) g(9,4,4)
+Solving...
+Answer: 1
+target(1,2,1,5) target(1,4,2,4) target(2,1,5,1) target(4,3,4,6) target(5,6,5,3) target(6,1,6,3) target(6,4,6,5)
+Answer: 2
+target(1,2,1,5) target(1,4,2,4) target(2,1,5,1) target(4,3,4,6) target(5,6,5,2) target(6,1,6,3) target(6,4,6,5)
+Answer: 3
+target(1,2,5,2) target(1,4,2,4) target(2,1,5,1) target(4,3,4,6) target(5,6,1,6) target(6,1,6,3) target(6,4,6,5)
+Answer: 4
+target(1,2,1,5) target(1,4,2,4) target(2,1,5,1) target(4,3,4,6) target(5,6,1,6) target(6,1,6,3) target(6,4,6,5)
+Answer: 5
+target(1,2,1,6) target(1,4,2,4) target(2,1,5,1) target(4,3,4,6) target(5,6,5,3) target(6,1,6,3) target(6,4,6,5)
+Answer: 6
+target(1,2,1,6) target(1,4,2,4) target(2,1,5,1) target(4,3,4,6) target(5,6,5,2) target(6,1,6,3) target(6,4,6,5)
+Answer: 7
+target(1,2,5,2) target(1,4,2,4) target(2,1,5,1) target(4,3,4,6) target(5,6,1,6) target(6,1,6,5) target(6,4,6,3)
+Answer: 8
+target(1,2,1,5) target(1,4,2,4) target(2,1,5,1) target(4,3,4,6) target(5,6,1,6) target(6,1,6,5) target(6,4,6,3)
+Answer: 9
+target(1,2,1,5) target(1,4,2,4) target(2,1,5,1) target(4,3,4,6) target(5,6,5,3) target(6,1,6,5) target(6,4,6,3)
+Answer: 10
+target(1,2,1,5) target(1,4,2,4) target(2,1,5,1) target(4,3,4,6) target(5,6,5,2) target(6,1,6,5) target(6,4,6,3)
+Answer: 11
+target(1,2,1,6) target(1,4,2,4) target(2,1,5,1) target(4,3,4,6) target(5,6,5,2) target(6,1,6,5) target(6,4,6,3)
+Answer: 12
+target(1,2,1,6) target(1,4,2,4) target(2,1,5,1) target(4,3,4,6) target(5,6,5,3) target(6,1,6,5) target(6,4,6,3)
+Answer: 13
+target(1,2,5,2) target(1,4,2,4) target(2,1,5,1) target(4,3,4,5) target(5,6,1,6) target(6,1,6,3) target(6,4,6,5)
+Answer: 14
+target(1,2,1,5) target(1,4,2,4) target(2,1,5,1) target(4,3,4,5) target(5,6,1,6) target(6,1,6,3) target(6,4,6,5)
+Answer: 15
+target(1,2,1,5) target(1,4,2,4) target(2,1,5,1) target(4,3,4,5) target(5,6,5,3) target(6,1,6,3) target(6,4,6,5)
+Answer: 16
+target(1,2,1,5) target(1,4,2,4) target(2,1,5,1) target(4,3,4,5) target(5,6,5,2) target(6,1,6,3) target(6,4,6,5)
+Answer: 17
+target(1,2,1,6) target(1,4,2,4) target(2,1,5,1) target(4,3,4,5) target(5,6,5,3) target(6,1,6,3) target(6,4,6,5)
+Answer: 18
+target(1,2,1,6) target(1,4,2,4) target(2,1,5,1) target(4,3,4,5) target(5,6,5,2) target(6,1,6,3) target(6,4,6,5)
+Answer: 19
+target(1,2,1,5) target(1,4,2,4) target(2,1,5,1) target(4,3,4,5) target(5,6,5,3) target(6,1,6,5) target(6,4,6,3)
+Answer: 20
+target(1,2,1,5) target(1,4,2,4) target(2,1,5,1) target(4,3,4,5) target(5,6,5,2) target(6,1,6,5) target(6,4,6,3)
+Answer: 21
+target(1,2,5,2) target(1,4,2,4) target(2,1,5,1) target(4,3,4,5) target(5,6,1,6) target(6,1,6,5) target(6,4,6,3)
+Answer: 22
+target(1,2,1,5) target(1,4,2,4) target(2,1,5,1) target(4,3,4,5) target(5,6,1,6) target(6,1,6,5) target(6,4,6,3)
+Answer: 23
+target(1,2,1,6) target(1,4,2,4) target(2,1,5,1) target(4,3,4,5) target(5,6,5,3) target(6,1,6,5) target(6,4,6,3)
+Answer: 24
+target(1,2,1,6) target(1,4,2,4) target(2,1,5,1) target(4,3,4,5) target(5,6,5,2) target(6,1,6,5) target(6,4,6,3)
+SATISFIABLE

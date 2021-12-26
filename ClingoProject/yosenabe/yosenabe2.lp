@@ -37,28 +37,17 @@
 grey_clear(N) :- target(Xo, Yo, Xf, Yf), area(Xf, Yf, N).
 :- not grey_clear(N), area( _, _, N).
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Generate arrows arrow(x_number, Y_number, X_path, Y_path):
+% Horizontal gen
+arrow(Xo, Y, Xo..Xf, Y) :- target(Xo, Y, Xf, Y), Xo < Xf.
+arrow(Xo, Y, Xf..Xo, Y) :- target(Xo, Y, Xf, Y), Xo > Xf.
+arrow(X, Yo, X, Yo..Yf) :- target(X, Yo, X, Yf), Yo < Yf.
+arrow(X, Yo, X, Yf..Yo) :- target(X, Yo, X, Yf), Yo > Yf.
 
-% Stop arrow crossing: Diferentes targets, que se movem em eixos diferentes, então distãncia entre o inicio e fim da seta tem que ser menor á distância até ao eixo do movimento do outro.
-:- target(Px1, Py1, Qx1, Qy1), target(Px2, Py2, Qx2, Qy2),
-Py1 == Qy1, Px2 == Qx2,
-V_T_dist = |Py2 - Qy2|, V_B_dist = |Py2 - Py1|, V_U_dist = |Qy2 - Py1|, V_T_dist == V_U_dist + V_B_dist,
-H_T_dist = |Px1 - Qx1|, H_L_dist = |Px1 - Qx2|, H_R_dist = |Qx1 - Qx2|, H_T_dist == H_L_dist + H_R_dist.
-
-% Lidar com intersecao de coolineares: https://eli.thegreenplace.net/2008/08/15/intersection-of-1d-segments
-:- target(Px1, Py1, Qx1, Qy1), target(Px2, Py2, Qx2, Qy2),
-Py1 == Py2, Qy1 == Py1, Qy2 == Py2, Qy1 == Qy2, Qx1 != Qx2, Px2 != Px1,
-Z1 = #min{Px1, Qx1}, Z2 = #max{Qx1, Px1}, W1 = #min{Qx2, Px2}, W2 = #max{Qx2, Px2},
-Z2 >= W1, W2 >= Z1.
-
-
-:- target(Px1, Py1, Qx1, Qy1), target(Px2, Py2, Qx2, Qy2),
-Px1 == Px2, Qx1 == Px1, Qx2 == Px2, Qx1 == Qx2, Qy1 != Qy2, Py2 != Py1,
-Z1 = #min{Py1, Qy1}, Z2 = #max{Qy1, Py1}, W1 = #min{Qy2, Py2}, W2 = #max{Qy2, Py2},
-Z2 >= W1, W2 >= Z1.
-
-
+fail :- arrow(X1, Y1, X, Y), arrow(X2, Y2, X, Y), X1 != X2.
+fail :- arrow(X1, Y1, X, Y), arrow(X2, Y2, X, Y), Y1 != Y2.
+:- fail.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Guarantee the threshold on goals
@@ -70,6 +59,6 @@ g(N, Aux, T) :-  goal(N, T), Aux = #sum{ V:additor(N, Xo, Yo, V)}, Aux == T.
 
 %#show additor/4.
 %#show g/3.
-%#show info_x/4.
-%#show info_y/4.
+%#show arrow/4.
 #show target/4.
+
