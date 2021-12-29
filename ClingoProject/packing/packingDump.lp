@@ -1,7 +1,7 @@
 maxheight(5).
-width(2).
+width(1).
 rectangle(1, 1, 1).
-rectangle(2, 1, 2). 
+rectangle(2, 1, 1). 
 rectangle(3, 1, 1). 
 % rectangle(4, 1, 1). 
 
@@ -14,7 +14,8 @@ cell(0..W, 0..H) :- width(W), maxheight(H).
 :- left_corner(ID, X1, Y1), left_corner(ID, X2, Y2), X1 != X2.
 :- left_corner(ID, X1, Y1), left_corner(ID, X2, Y2), Y1 != Y2.
 
-:- No_Rect = #count{ID:rectangle(ID, W, H)}, No_left_corer = #count{ID1:left_corner(ID1, X, Y)}, No_left_corer != No_Rect.
+:- rectangle(ID, _ , _), not left_corner(ID, _, _).
+
 fail :- left_corner(ID, X, Y), rectangle(ID, W, H), maxheight(MH), width(MW),
 Y + H > MH.
 fail :- left_corner(ID, X, Y), rectangle(ID, W, H), maxheight(MH), width(MW),
@@ -35,14 +36,11 @@ T2 = B2 + H2,
 B1 < T2.
 
 
-% L1 = 0, R1 = 2, B1 = 0, T1 = 4
-% L2 = 1, R2 = 3, B2 = 0, T2 = 4
-
 max_row(Y) :- Y = #max{Z : left_corner(ID, _, B), rectangle(ID, _, H), Z = B + H}.
 
 :- max_row(Y), rectangle(ID, _, B), rectangle(ID, _, H), Y < B + H. 
 
-#minimize{Y@2:max_row(Y)}.
+%#minimize{Y@2:max_row(Y)}.
 %#minimize{Y@1:rectangle(ID, _, H), left_corner(ID, _, B), Y= B + H}.
 
 #show left_corner/3.
